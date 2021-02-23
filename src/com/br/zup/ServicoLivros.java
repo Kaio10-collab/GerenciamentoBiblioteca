@@ -53,8 +53,4 @@ public class ServicoLivros {
         }
         return livrosPesquisados;
     }
-<<<<<<< HEAD
-
-=======
->>>>>>> 3c9315a8d07b886748418d3f8984513cb80aa8cc
 }
