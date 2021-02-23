@@ -5,26 +5,26 @@ import java.util.List;
 
 public class ServicoLivros {
 
-    private List<InformacoesDoLivro>livros = new ArrayList<>();
+    private List<Livro>livros = new ArrayList<>();
 
-    public InformacoesDoLivro cadastrarNovoLivro(String autor, String titulo, String editora, int exemplares, String categoria){
-        InformacoesDoLivro novoLivro;
-        novoLivro = new InformacoesDoLivro( autor, titulo, editora, categoria, exemplares );
+    public Livro cadastrarNovoLivro(String autor, String titulo, String editora, int exemplares, String categoria){
+        Livro novoLivro;
+        novoLivro = new Livro( autor, titulo, editora, categoria, exemplares );
         livros.add(novoLivro);
         return novoLivro;
     }
 
     public String ListarTodosOsLivros() {
         String livroInformacao = "";
-        for(InformacoesDoLivro livro : livros) {
+        for(Livro livro : livros) {
             livroInformacao += livros.toString();
         }
         return livroInformacao;
     }
 
-    public List<InformacoesDoLivro> buscarLivroPorAutor(String autor) {
-        List<InformacoesDoLivro>livrosPesquisados = new ArrayList<>();
-        for (InformacoesDoLivro livro: livros) {
+    public List<Livro> buscarLivroPorAutor(String autor) {
+        List<Livro>livrosPesquisados = new ArrayList<>();
+        for (Livro livro: livros) {
             if (livro.getAutor().equalsIgnoreCase(autor)){
                 livrosPesquisados.add(livro);
             }
@@ -32,9 +32,9 @@ public class ServicoLivros {
         return livrosPesquisados;
     }
 
-    public List<InformacoesDoLivro> buscarLivroPorEditora(String editora) {
-        List<InformacoesDoLivro>livrosPesquisados = new ArrayList<>();
-        for (InformacoesDoLivro livro: livros) {
+    public List<Livro> buscarLivroPorEditora(String editora) {
+        List<Livro>livrosPesquisados = new ArrayList<>();
+        for (Livro livro: livros) {
             if (livro.getEditora().equalsIgnoreCase(editora)){
                 livrosPesquisados.add(livro);
             }

@@ -27,14 +27,14 @@ public class Biblioteca {
             int option = IO.input().nextInt();
             if(option == 1){
                 IO.output("Por favor, forneça as seguintes informações: autor, título, editora, número de exemplares e categoria");
-               InformacoesDoLivro livro =  servicoLivros.cadastrarNovoLivro(
+                Livro livro =  servicoLivros.cadastrarNovoLivro(
                         IO.input().nextLine(),
                         IO.input().nextLine(),
                         IO.input().nextLine(),
                         IO.input().nextInt(),
                         IO.input().nextLine()
                 );
-               IO.output("Livro foi cadastrado " + livro.toString());
+               IO.output("Livro foi cadastrado \n" + livro.toString());
             }
             else if (option == 2){
                 IO.output(servicoLivros.ListarTodosOsLivros());
@@ -42,13 +42,13 @@ public class Biblioteca {
             else if (option == 3){
                 IO.output("Favor informar o nome do autor");
                 String autor = IO.input().nextLine();
-                List<InformacoesDoLivro> livrosPorAutor = servicoLivros.buscarLivroPorAutor(autor);
+                List<Livro> livrosPorAutor = servicoLivros.buscarLivroPorAutor(autor);
                 IO.output(livrosPorAutor.toString());
             }
             else if (option == 4){
                 IO.output("Favor informar o nome da editora");
                 String editora = IO.input().nextLine();
-                List<InformacoesDoLivro> livrosPorEditora = servicoLivros.buscarLivroPorEditora(editora);
+                List<Livro> livrosPorEditora = servicoLivros.buscarLivroPorEditora(editora);
                 IO.output(livrosPorEditora.toString());
             }
             else if(option == 0){
