@@ -3,6 +3,7 @@ package com.br.zup;
 public class Main {
 
     public static void main(String[] args) {
-	// write your code here
+        Biblioteca biblioteca = new Biblioteca();
+        biblioteca.executar();
     }
 }
