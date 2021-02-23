@@ -55,4 +55,15 @@ public class InformacoesDoLivro {
     public void setExemplares(int exemplares) {
         this.exemplares = exemplares;
     }
+
+    @Override
+    public String toString() {
+        return "\n===================================================\n" +
+                "autor: '" + autor + '\'' +
+                "\ntitulo: '" + titulo + '\'' +
+                "\neditora: '" + editora + '\'' +
+                "\ncategoria: '" + categoria + '\'' +
+                "\nexemplares: " + exemplares +
+                "=====================================================\n";
+    }
 }
