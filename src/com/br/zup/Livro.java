@@ -71,6 +71,6 @@ public class Livro {
                 "\neditora: " + editora +
                 "\ncategoria: " + categoria +
                 "\nexemplares: " + exemplares +
-                "\n======================================================\n";
+                "\n=======================================================\n";
     }
 }
