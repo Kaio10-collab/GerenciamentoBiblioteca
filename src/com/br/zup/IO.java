@@ -9,4 +9,7 @@ public class IO {
         return new Scanner(System.in);
     }
 
+    public static void output (String texto){
+        System.out.println(texto);
+    }
 }
