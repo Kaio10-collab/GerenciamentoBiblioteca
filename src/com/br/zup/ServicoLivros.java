@@ -14,4 +14,12 @@ public class ServicoLivros {
         return novoLivro;
     }
 
+    public String ListarTodosOsLivros() {
+        String livroInformacao = "";
+        for(InformacoesDoLivro livro : livros) {
+            livroInformacao += livros.toString();
+        }
+        return livroInformacao;
+    }
+
 }
