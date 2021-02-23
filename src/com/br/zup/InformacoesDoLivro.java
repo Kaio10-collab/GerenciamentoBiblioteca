@@ -3,14 +3,14 @@ package com.br.zup;
 public class InformacoesDoLivro {
 
     private String autor;
-    private String título;
+    private String titulo;
     private String editora;
     private String categoria;
     private int exemplares;
 
-    public InformacoesDoLivro(String autor, String título, String editora, String categoria, int exemplares) {
+    public InformacoesDoLivro(String autor, String titulo, String editora, String categoria, int exemplares) {
         this.autor = autor;
-        this.título = título;
+        this.titulo = titulo;
         this.editora = editora;
         this.categoria = categoria;
         this.exemplares = exemplares;
@@ -24,12 +24,12 @@ public class InformacoesDoLivro {
         this.autor = autor;
     }
 
-    public String getTítulo() {
-        return título;
+    public String getTitulo() {
+        return titulo;
     }
 
-    public void setTítulo(String título) {
-        this.título = título;
+    public void setTitulo(String titulo) {
+        this.titulo = titulo;
     }
 
     public String getEditora() {
