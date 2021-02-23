@@ -22,4 +22,19 @@ public class ServicoLivros {
         return livroInformacao;
     }
 
+    public List<InformacoesDoLivro> buscarLivroPorAutor(String autor) {
+        List<InformacoesDoLivro>livrosPesquisados = new ArrayList<>();
+        for (InformacoesDoLivro livro: livros) {
+            if (livro.getAutor().equalsIgnoreCase(autor)){
+                livrosPesquisados.add(livro);
+            }
+        }
+        return livrosPesquisados;
+    }
+
+    public List<InformacoesDoLivro> buscarLivroPorEditora(String editora) {
+
+    }
+
+
 }
