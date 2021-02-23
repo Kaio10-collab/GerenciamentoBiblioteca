@@ -1,5 +1,9 @@
 package com.br.zup;
 
+/**
+ * modelo de dados dos livros da biblioteca
+ *
+ * */
 public class Livro {
 
     private String autor;
@@ -7,6 +11,9 @@ public class Livro {
     private String editora;
     private String categoria;
     private int exemplares;
+
+    public Livro() {
+    }
 
     public Livro(String autor, String titulo, String editora, String categoria, int exemplares) {
         this.autor = autor;
