@@ -1,6 +1,10 @@
 package com.br.zup;
 
-public class InformacoesDoLivro {
+/**
+ * modelo de dados dos livros da biblioteca
+ *
+ * */
+public class Livro {
 
     private String autor;
     private String titulo;
@@ -8,7 +12,10 @@ public class InformacoesDoLivro {
     private String categoria;
     private int exemplares;
 
-    public InformacoesDoLivro(String autor, String titulo, String editora, String categoria, int exemplares) {
+    public Livro() {
+    }
+
+    public Livro(String autor, String titulo, String editora, String categoria, int exemplares) {
         this.autor = autor;
         this.titulo = titulo;
         this.editora = editora;
@@ -58,12 +65,12 @@ public class InformacoesDoLivro {
 
     @Override
     public String toString() {
-        return "\n===================================================\n" +
-                "autor: '" + autor + '\'' +
-                "\ntitulo: '" + titulo + '\'' +
-                "\neditora: '" + editora + '\'' +
-                "\ncategoria: '" + categoria + '\'' +
+        return "=======================================================" +
+                "\nautor: " + autor +
+                "\ntitulo: " + titulo +
+                "\neditora: " + editora +
+                "\ncategoria: " + categoria +
                 "\nexemplares: " + exemplares +
-                "=====================================================\n";
+                "\n=======================================================\n";
     }
 }
