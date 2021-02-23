@@ -29,7 +29,7 @@ public class ServicoLivros {
     public String ListarTodosOsLivros() {
         String livroInformacao = "";
         for(Livro livro : livros) {
-            livroInformacao += livros.toString();
+            livroInformacao += livro.toString();
         }
         return livroInformacao;
     }
