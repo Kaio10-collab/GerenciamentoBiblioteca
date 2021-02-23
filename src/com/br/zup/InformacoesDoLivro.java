@@ -1,6 +1,6 @@
 package com.br.zup;
 
-public class InformaçõesDoLivro {
+public class InformacoesDoLivro {
 
     private String autor;
     private String título;
@@ -8,7 +8,7 @@ public class InformaçõesDoLivro {
     private String categoria;
     private int exemplares;
 
-    public InformaçõesDoLivro(String autor, String título, String editora, String categoria, int exemplares) {
+    public InformacoesDoLivro(String autor, String título, String editora, String categoria, int exemplares) {
         this.autor = autor;
         this.título = título;
         this.editora = editora;
