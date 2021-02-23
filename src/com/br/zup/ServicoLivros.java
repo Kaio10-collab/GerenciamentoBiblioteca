@@ -33,6 +33,13 @@ public class ServicoLivros {
     }
 
     public List<InformacoesDoLivro> buscarLivroPorEditora(String editora) {
+        List<InformacoesDoLivro>livrosPesquisados = new ArrayList<>();
+        for (InformacoesDoLivro livro: livros) {
+            if (livro.getEditora().equalsIgnoreCase(editora)){
+                livrosPesquisados.add(livro);
+            }
+        }
+        return livrosPesquisados;
 
     }
 
