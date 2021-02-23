@@ -3,6 +3,13 @@ package com.br.zup;
 import java.util.ArrayList;
 import java.util.List;
 
+
+/**
+ * responsável por operações de dados dos livros
+ * - cadastrar um livro
+ * - buscar livro por autor ou editora
+ * - listar os livros
+ * */
 public class ServicoLivros {
 
     private List<Livro>livros = new ArrayList<>();
@@ -14,6 +21,11 @@ public class ServicoLivros {
         return novoLivro;
     }
 
+    /**
+     * concatena os livros em um único texto
+     * para que seja visualizado na tela
+     * @return String
+     * */
     public String ListarTodosOsLivros() {
         String livroInformacao = "";
         for(Livro livro : livros) {
@@ -40,8 +52,5 @@ public class ServicoLivros {
             }
         }
         return livrosPesquisados;
-
     }
-
-
 }
