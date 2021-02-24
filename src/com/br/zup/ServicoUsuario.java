@@ -3,6 +3,10 @@ package com.br.zup;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+* classe de serviços do usuário
+* pode cadastrar e buscar o usuários
+* */
 public class ServicoUsuario {
     private List<Usuario> usuarios = new ArrayList();
 
@@ -30,5 +34,3 @@ public class ServicoUsuario {
         }
     }
 }
-//Cadastrar um novo usuáiro:
-//nome, e-mail
