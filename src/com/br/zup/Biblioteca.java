@@ -69,19 +69,7 @@ public class Biblioteca {
                 IO.output("Por favor, digite o email do usuário: ");
                 Usuario usuario = ServicoUsuario.pesquisarUsuarioPorEmail(IO.input().nextLine());
                 List<Livro> livrosUsuario = new ArrayList<>();
-
-                boolean executarCadastroLivros = true;
-                while(executarCadastroLivros) {
-                    IO.output("Por favor, digite o autor, título e categoria do livro");
-                    livrosUsuario.add(
-                            new Livro(IO.input().nextLine(), IO.input().nextLine(), IO.input().nextLine())
-                    );
-                    IO.output("Deseja adicionar mais um livro? (Sim/Nao)");
-                    String resposta = IO.input().nextLine();
-                    if (resposta.equalsIgnoreCase("nao")) {
-                        executarCadastroLivros = false;
-                    }
-                }
+                adicionarLivroNaListaDoUsuario(livrosUsuario);
                 ServicoLivrosDoUsuario.cadastrarLivrosDoUsuario(usuario, livrosUsuario);
             } else if (option == 7) {
                 IO.output("Por favor, informar o e-mail do usuário e o título do livro:");
@@ -97,6 +85,21 @@ public class Biblioteca {
             }
         }
 
+    }
+
+    private void adicionarLivroNaListaDoUsuario(List<Livro> livrosUsuario) {
+        boolean executarCadastroLivros = true;
+        while(executarCadastroLivros) {
+            IO.output("Por favor, digite o autor, título e categoria do livro");
+            livrosUsuario.add(
+                    new Livro(IO.input().nextLine(), IO.input().nextLine(), IO.input().nextLine())
+            );
+            IO.output("Deseja adicionar mais um livro? (Sim/Nao)");
+            String resposta = IO.input().nextLine();
+            if (resposta.equalsIgnoreCase("nao")) {
+                executarCadastroLivros = false;
+            }
+        }
     }
 
     public boolean isExecutar() {
