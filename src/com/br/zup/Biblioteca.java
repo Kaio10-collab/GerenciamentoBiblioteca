@@ -107,4 +107,8 @@ public class Biblioteca {
         }
 
     }
+
+    public boolean isExecutar() {
+        return executar;
+    }
 }
