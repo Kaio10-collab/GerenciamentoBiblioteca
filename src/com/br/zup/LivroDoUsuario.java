@@ -15,4 +15,8 @@ public class LivroDoUsuario {
     public List<Livro> getLivros() {
         return livros;
     }
+
+    public Usuario getUsuario() {
+        return usuario;
+    }
 }

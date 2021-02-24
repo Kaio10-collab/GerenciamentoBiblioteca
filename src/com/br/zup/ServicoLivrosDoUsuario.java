@@ -6,7 +6,7 @@ import java.util.List;
 public class ServicoLivrosDoUsuario {
      private List<LivroDoUsuario> livroDoUsuarios = new ArrayList<>();
 
-     public void cadastrarLivrosDoUsuario(Usuario usuario, List <Livro> livros ){
+     public void cadastrarLivrosDoUsuario(Usuario usuario, List <Livro> livros ) throws Exception {
         LivroDoUsuario livroDoUsuario = new LivroDoUsuario(usuario);
          for (Livro livro: livros) {
              livroDoUsuario.getLivros().add(livro);
@@ -14,5 +14,29 @@ public class ServicoLivrosDoUsuario {
          livroDoUsuarios.add(livroDoUsuario);
      }
 
-
+     public Livro removerLivroDoUsuario(Usuario usuario, String titulo ) throws Exception {
+         LivroDoUsuario livroDoUsuario = null;
+         Livro removido = null;
+         for (LivroDoUsuario item : livroDoUsuarios) {
+             if (item.getUsuario().getEmail().equalsIgnoreCase(usuario.getEmail())){
+                 livroDoUsuario = item;
+             }
+         }
+         if (livroDoUsuario != null){
+             for (Livro livro : livroDoUsuario.getLivros()) {
+                 if(livro.getTitulo().equalsIgnoreCase(titulo)){
+                     removido = livro;
+                 }
+             }
+             if(removido != null){
+                 livroDoUsuario.getLivros().remove(removido);
+                 return removido;
+             }
+             else{
+                 throw new Exception("Livro não localizado");
+             }
+         }else{
+             throw new Exception("Usuário não localizado");
+         }
+     }
 }
