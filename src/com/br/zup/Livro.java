@@ -23,6 +23,12 @@ public class Livro {
         this.exemplares = exemplares;
     }
 
+    public Livro(String autor, String titulo, String categoria) {
+        this.autor = autor;
+        this.titulo = titulo;
+        this.categoria = categoria;
+    }
+
     public String getAutor() {
         return autor;
     }
