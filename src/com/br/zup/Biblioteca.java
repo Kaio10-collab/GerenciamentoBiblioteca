@@ -13,9 +13,11 @@ public class Biblioteca {
 
     private boolean executar = true;
     private ServicoLivros servicoLivros;
+    private ServicoUsuario servicoUsuario;
 
     public Biblioteca() {
         servicoLivros = new ServicoLivros();
+        servicoUsuario = new ServicoUsuario();
     }
 
     private void menu (){
@@ -23,10 +25,11 @@ public class Biblioteca {
                 "Opção 2: Listar os livros\n" +
                 "Opção 3: Buscar o livro por autor\n" +
                 "Opção 4: Buscar o livro por editora\n" +
+                "Opção 5: Cadastrar Usuário\n" +
                 "Opção 0: Sair do programa");
     }
 
-    public void executar (){
+    public void executar () throws Exception {
         IO.output("Bem vindo a biblioteca!");
         while (executar){
             menu();
@@ -55,9 +58,16 @@ public class Biblioteca {
                 IO.output("Favor informar o nome da editora");
                 List<Livro> livrosPorEditora = servicoLivros.buscarLivroPorEditora(IO.input().nextLine());
                 IO.output(livrosPorEditora.toString());
-            }
-            else if(option == 0){
+            }else if(option == 0){
                 executar = false;
+            } else if (option == 5) {
+                IO.output("Por favor, digite um nome e um e-mail: ");
+                Usuario usuario = servicoUsuario.cadastrarUsuario(
+                        IO.input().nextLine(),
+                        IO.input().nextLine()
+                );
+                IO.output("Usuário cadastro!");
+                IO.output(usuario.toString());
             }
         }
 
