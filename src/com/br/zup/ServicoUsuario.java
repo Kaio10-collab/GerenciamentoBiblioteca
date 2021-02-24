@@ -3,7 +3,7 @@ package com.br.zup;
 import java.util.ArrayList;
 import java.util.List;
 
-public class servicoUsuario {
+public class ServicoUsuario {
     private List<Usuario> usuarios = new ArrayList();
 
     public Usuario cadastrarUsuario(String nome, String email)throws Exception{
