@@ -8,9 +8,9 @@ import java.util.List;
 * pode cadastrar e buscar o usuários
 * */
 public class ServicoUsuario {
-    private List<Usuario> usuarios = new ArrayList();
+    private static List<Usuario> usuarios = new ArrayList();
 
-    public Usuario cadastrarUsuario(String nome, String email)throws Exception{
+    public static Usuario cadastrarUsuario(String nome, String email)throws Exception{
         if (email.contains("@")){
             Usuario usuario = new Usuario(nome,email);
             usuarios.add(usuario);
@@ -20,7 +20,7 @@ public class ServicoUsuario {
         }
     }
 
-    public Usuario pesquisarUsuarioPorEmail(String email) throws Exception {
+    public static Usuario pesquisarUsuarioPorEmail(String email) throws Exception {
         Usuario usuario = null;
         for (Usuario item : usuarios) {
             if (item.getEmail().equalsIgnoreCase(email)) {
@@ -30,7 +30,7 @@ public class ServicoUsuario {
         if (usuario != null) {
             return usuario;
         } else {
-            throw new Exception("Usuário não localizado, portanto, não será possível cadastrar livros!");
+            throw new Exception("Usuário não localizado");
         }
     }
 }

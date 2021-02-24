@@ -4,9 +4,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ServicoLivrosDoUsuario {
-     private List<LivroDoUsuario> livroDoUsuarios = new ArrayList<>();
+     private static List<LivroDoUsuario> livroDoUsuarios = new ArrayList<>();
 
-     public void cadastrarLivrosDoUsuario(Usuario usuario, List <Livro> livros ) throws Exception {
+     public static void cadastrarLivrosDoUsuario(Usuario usuario, List <Livro> livros ) throws Exception {
         LivroDoUsuario livroDoUsuario = new LivroDoUsuario(usuario);
          for (Livro livro: livros) {
              livroDoUsuario.getLivros().add(livro);
@@ -14,7 +14,7 @@ public class ServicoLivrosDoUsuario {
          livroDoUsuarios.add(livroDoUsuario);
      }
 
-     public Livro removerLivroDoUsuario(Usuario usuario, String titulo ) throws Exception {
+     public static Livro removerLivroDoUsuario(Usuario usuario, String titulo ) throws Exception {
          LivroDoUsuario livroDoUsuario = null;
          Livro removido = null;
          for (LivroDoUsuario item : livroDoUsuarios) {
@@ -40,7 +40,7 @@ public class ServicoLivrosDoUsuario {
          }
      }
 
-     public String listarLivroDoUsuario(Usuario usuario) throws Exception {
+     public static String listarLivroDoUsuario(Usuario usuario) throws Exception {
          String listaLivros = "";
          LivroDoUsuario livroDoUsuario = null;
          for (LivroDoUsuario item : livroDoUsuarios) {
