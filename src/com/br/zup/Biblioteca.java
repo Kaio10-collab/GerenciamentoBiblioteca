@@ -31,6 +31,7 @@ public class Biblioteca {
                 "Opção 5: Cadastrar Usuário\n" +
                 "Opção 6: Cadastrar livros que o usuário deseja ler\n" +
                 "Opção 7: Remover um livro da lista de desejos do usuário\n" +
+                "Opção 8: Listar os livros da lista de desejos do usuário\n" +
                 "Opção 0: Sair do programa");
     }
 
@@ -97,6 +98,11 @@ public class Biblioteca {
                 Livro livroRemovido = servicoLivrosDoUsuario.removerLivroDoUsuario(usuario, IO.input().nextLine());
                 IO.output("Livro removido: ");
                 IO.output(livroRemovido.toString());
+            } else if (option == 8) {
+                IO.output("Por favor, digite o email do usuário");
+                Usuario usuario = servicoUsuario.pesquisarUsuarioPorEmail(IO.input().nextLine());
+                String livros = servicoLivrosDoUsuario.listarLivroDoUsuario(usuario);
+                IO.output(livros);
             }
         }
 
