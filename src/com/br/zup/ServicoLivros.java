@@ -12,9 +12,9 @@ import java.util.List;
  * */
 public class ServicoLivros {
 
-    private List<Livro>livros = new ArrayList<>();
+    private static List<Livro>livros = new ArrayList<>();
 
-    public Livro cadastrarNovoLivro(String autor, String titulo, String editora, int exemplares, String categoria){
+    public static Livro cadastrarNovoLivro(String autor, String titulo, String editora, int exemplares, String categoria){
         Livro novoLivro;
         novoLivro = new Livro( autor, titulo, editora, categoria, exemplares );
         livros.add(novoLivro);
@@ -26,7 +26,7 @@ public class ServicoLivros {
      * para que seja visualizado na tela
      * @return String
      * */
-    public String ListarTodosOsLivros() {
+    public static String ListarTodosOsLivros() {
         String livroInformacao = "";
         for(Livro livro : livros) {
             livroInformacao += livro.toString();
@@ -34,7 +34,7 @@ public class ServicoLivros {
         return livroInformacao;
     }
 
-    public List<Livro> buscarLivroPorAutor(String autor) {
+    public static List<Livro> buscarLivroPorAutor(String autor) {
         List<Livro>livrosPesquisados = new ArrayList<>();
         for (Livro livro: livros) {
             if (livro.getAutor().equalsIgnoreCase(autor)){
@@ -44,7 +44,7 @@ public class ServicoLivros {
         return livrosPesquisados;
     }
 
-    public List<Livro> buscarLivroPorEditora(String editora) {
+    public static List<Livro> buscarLivroPorEditora(String editora) {
         List<Livro>livrosPesquisados = new ArrayList<>();
         for (Livro livro: livros) {
             if (livro.getEditora().equalsIgnoreCase(editora)){

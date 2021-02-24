@@ -8,10 +8,12 @@ public class Main {
 
     public static void main(String[] args) {
         Biblioteca biblioteca = new Biblioteca();
-        try {
-            biblioteca.executar();
-        } catch (Exception e) {
-            IO.output(e.getMessage());
+        while(biblioteca.isExecutar()) {
+            try {
+                biblioteca.executar();
+            } catch (Exception e) {
+                IO.output(e.getMessage());
+            }
         }
     }
 }

@@ -13,15 +13,6 @@ import java.util.List;
 public class Biblioteca {
 
     private boolean executar = true;
-    private ServicoLivros servicoLivros;
-    private ServicoUsuario servicoUsuario;
-    private ServicoLivrosDoUsuario servicoLivrosDoUsuario;
-
-    public Biblioteca() {
-        servicoLivros = new ServicoLivros();
-        servicoUsuario = new ServicoUsuario();
-        servicoLivrosDoUsuario = new ServicoLivrosDoUsuario();
-    }
 
     private void menu (){
         IO.output("Opção 1: Cadastrar nome do livro\n" +
@@ -42,7 +33,7 @@ public class Biblioteca {
             int option = IO.input().nextInt();
             if(option == 1){
                 IO.output("Por favor, forneça as seguintes informações: autor, título, editora, número de exemplares e categoria");
-                Livro livro =  servicoLivros.cadastrarNovoLivro(
+                Livro livro =  ServicoLivros.cadastrarNovoLivro(
                         IO.input().nextLine(),
                         IO.input().nextLine(),
                         IO.input().nextLine(),
@@ -53,30 +44,30 @@ public class Biblioteca {
                IO.output("Livro foi cadastrado \n" + livro.toString());
             }
             else if (option == 2){
-                IO.output(servicoLivros.ListarTodosOsLivros());
+                IO.output(ServicoLivros.ListarTodosOsLivros());
             }
             else if (option == 3){
                 IO.output("Favor informar o nome do autor");
-                List<Livro> livrosPorAutor = servicoLivros.buscarLivroPorAutor(IO.input().nextLine());
+                List<Livro> livrosPorAutor = ServicoLivros.buscarLivroPorAutor(IO.input().nextLine());
                 IO.output(livrosPorAutor.toString());
             }
             else if (option == 4){
                 IO.output("Favor informar o nome da editora");
-                List<Livro> livrosPorEditora = servicoLivros.buscarLivroPorEditora(IO.input().nextLine());
+                List<Livro> livrosPorEditora = ServicoLivros.buscarLivroPorEditora(IO.input().nextLine());
                 IO.output(livrosPorEditora.toString());
             }else if(option == 0){
                 executar = false;
             } else if (option == 5) {
                 IO.output("Por favor, digite um nome e um e-mail: ");
-                Usuario usuario = servicoUsuario.cadastrarUsuario(
+                Usuario usuario = ServicoUsuario.cadastrarUsuario(
                         IO.input().nextLine(),
                         IO.input().nextLine()
                 );
-                IO.output("Usuário cadastro!");
+                IO.output("\u2713 Usuário cadastro!");
                 IO.output(usuario.toString());
             } else if (option == 6) {
                 IO.output("Por favor, digite o email do usuário: ");
-                Usuario usuario = servicoUsuario.pesquisarUsuarioPorEmail(IO.input().nextLine());
+                Usuario usuario = ServicoUsuario.pesquisarUsuarioPorEmail(IO.input().nextLine());
                 List<Livro> livrosUsuario = new ArrayList<>();
 
                 boolean executarCadastroLivros = true;
@@ -91,20 +82,24 @@ public class Biblioteca {
                         executarCadastroLivros = false;
                     }
                 }
-                servicoLivrosDoUsuario.cadastrarLivrosDoUsuario(usuario, livrosUsuario);
+                ServicoLivrosDoUsuario.cadastrarLivrosDoUsuario(usuario, livrosUsuario);
             } else if (option == 7) {
                 IO.output("Por favor, informar o e-mail do usuário e o título do livro:");
-                Usuario usuario = servicoUsuario.pesquisarUsuarioPorEmail(IO.input().nextLine());
-                Livro livroRemovido = servicoLivrosDoUsuario.removerLivroDoUsuario(usuario, IO.input().nextLine());
+                Usuario usuario = ServicoUsuario.pesquisarUsuarioPorEmail(IO.input().nextLine());
+                Livro livroRemovido = ServicoLivrosDoUsuario.removerLivroDoUsuario(usuario, IO.input().nextLine());
                 IO.output("Livro removido: ");
                 IO.output(livroRemovido.toString());
             } else if (option == 8) {
                 IO.output("Por favor, digite o email do usuário");
-                Usuario usuario = servicoUsuario.pesquisarUsuarioPorEmail(IO.input().nextLine());
-                String livros = servicoLivrosDoUsuario.listarLivroDoUsuario(usuario);
+                Usuario usuario = ServicoUsuario.pesquisarUsuarioPorEmail(IO.input().nextLine());
+                String livros = ServicoLivrosDoUsuario.listarLivroDoUsuario(usuario);
                 IO.output(livros);
             }
         }
 
+    }
+
+    public boolean isExecutar() {
+        return executar;
     }
 }
