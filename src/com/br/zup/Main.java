@@ -11,5 +11,3 @@ public class Main {
         biblioteca.executar();
     }
 }
-//Cadastrar um novo usuáiro:
-//nome, e-mail
