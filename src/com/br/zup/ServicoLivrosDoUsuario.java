@@ -39,4 +39,22 @@ public class ServicoLivrosDoUsuario {
              throw new Exception("Usuário não localizado");
          }
      }
+
+     public String listarLivroDoUsuario(Usuario usuario) throws Exception {
+         String listaLivros = "";
+         LivroDoUsuario livroDoUsuario = null;
+         for (LivroDoUsuario item : livroDoUsuarios) {
+             if (item.getUsuario().getEmail().equalsIgnoreCase(usuario.getEmail())){
+                 livroDoUsuario = item;
+             }
+         }
+         if (livroDoUsuario != null) {
+             for (Livro livro: livroDoUsuario.getLivros()) {
+                 listaLivros += livro.toString();
+             }
+             return listaLivros;
+         } else {
+             throw new Exception("Usuário não localizado!");
+         }
+     }
 }
