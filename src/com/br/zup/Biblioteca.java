@@ -1,5 +1,6 @@
 package com.br.zup;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -14,10 +15,12 @@ public class Biblioteca {
     private boolean executar = true;
     private ServicoLivros servicoLivros;
     private ServicoUsuario servicoUsuario;
+    private ServicoLivrosDoUsuario servicoLivrosDoUsuario;
 
     public Biblioteca() {
         servicoLivros = new ServicoLivros();
         servicoUsuario = new ServicoUsuario();
+        servicoLivrosDoUsuario = new ServicoLivrosDoUsuario();
     }
 
     private void menu (){
@@ -26,6 +29,7 @@ public class Biblioteca {
                 "Opção 3: Buscar o livro por autor\n" +
                 "Opção 4: Buscar o livro por editora\n" +
                 "Opção 5: Cadastrar Usuário\n" +
+                "Opção 6: Cadastrar livros que o usuário deseja ler\n" +
                 "Opção 0: Sair do programa");
     }
 
@@ -68,6 +72,24 @@ public class Biblioteca {
                 );
                 IO.output("Usuário cadastro!");
                 IO.output(usuario.toString());
+            } else if (option == 6) {
+                IO.output("Por favor, digite o email do usuário: ");
+                Usuario usuario = servicoUsuario.pesquisarUsuarioPorEmail(IO.input().nextLine());
+                List<Livro> livrosUsuario = new ArrayList<>();
+
+                boolean executarCadastroLivros = true;
+                while(executarCadastroLivros) {
+                    IO.output("Por favor, digite o autor, título e categoria do livro");
+                    livrosUsuario.add(
+                            new Livro(IO.input().nextLine(), IO.input().nextLine(), IO.input().nextLine())
+                    );
+                    IO.output("Deseja adicionar mais um livro? (Sim/Nao)");
+                    String resposta = IO.input().nextLine();
+                    if (resposta.equalsIgnoreCase("nao")) {
+                        executarCadastroLivros = false;
+                    }
+                }
+                servicoLivrosDoUsuario.cadastrarLivrosDoUsuario(usuario, livrosUsuario);
             }
         }
 
