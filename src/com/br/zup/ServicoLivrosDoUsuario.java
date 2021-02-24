@@ -22,6 +22,10 @@ public class ServicoLivrosDoUsuario {
                  livroDoUsuario = item;
              }
          }
+         return verificarRemocao(livroDoUsuario, removido, titulo);
+     }
+
+     private static Livro verificarRemocao(LivroDoUsuario livroDoUsuario, Livro removido, String titulo) throws Exception {
          if (livroDoUsuario != null){
              for (Livro livro : livroDoUsuario.getLivros()) {
                  if(livro.getTitulo().equalsIgnoreCase(titulo)){
