@@ -14,7 +14,7 @@ public class ServicoLivro {
 
     private static List<Livro>livros = new ArrayList<>();
 
-    public static Livro cadastrarNovoLivro(String autor, String titulo, String editora, int exemplares, String categoria){
+    public static Livro cadastrarNovoLivro(String autor, String titulo, String editora, int exemplares, Categoria categoria){
         Livro novoLivro;
         novoLivro = new Livro( autor, titulo, editora, categoria, exemplares );
         livros.add(novoLivro);
