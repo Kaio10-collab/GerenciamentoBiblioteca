@@ -53,4 +53,14 @@ public class ServicoLivro {
         }
         return livrosPesquisados;
     }
+
+    public static List<Livro> pesquisarLivroPorCategoria(Categoria categoria) {
+        List<Livro> livrosPorCategoria = new ArrayList<>();
+        for (Livro livro : livros) {
+            if (livro.getCategoria() == categoria) {
+                livrosPorCategoria.add(livro);
+            }
+        }
+        return livrosPorCategoria;
+    }
 }
