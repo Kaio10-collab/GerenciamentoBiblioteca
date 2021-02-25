@@ -1,5 +1,7 @@
 package com.br.zup;
 
+import java.util.Objects;
+
 /**
  * modelo de dados dos livros da biblioteca
  *
@@ -67,6 +69,19 @@ public class Livro {
 
     public void setExemplares(int exemplares) {
         this.exemplares = exemplares;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Livro livro = (Livro) o;
+        return categoria == livro.categoria;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(categoria);
     }
 
     @Override
