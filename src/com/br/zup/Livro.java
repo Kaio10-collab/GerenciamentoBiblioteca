@@ -1,5 +1,7 @@
 package com.br.zup;
 
+import java.util.Objects;
+
 /**
  * modelo de dados dos livros da biblioteca
  *
@@ -9,13 +11,13 @@ public class Livro {
     private String autor;
     private String titulo;
     private String editora;
-    private String categoria;
+    private Categoria categoria;
     private int exemplares;
 
     public Livro() {
     }
 
-    public Livro(String autor, String titulo, String editora, String categoria, int exemplares) {
+    public Livro(String autor, String titulo, String editora, Categoria categoria, int exemplares) {
         this.autor = autor;
         this.titulo = titulo;
         this.editora = editora;
@@ -23,7 +25,7 @@ public class Livro {
         this.exemplares = exemplares;
     }
 
-    public Livro(String autor, String titulo, String categoria) {
+    public Livro(String autor, String titulo, Categoria categoria) {
         this.autor = autor;
         this.titulo = titulo;
         this.categoria = categoria;
@@ -53,11 +55,11 @@ public class Livro {
         this.editora = editora;
     }
 
-    public String getCategoria() {
+    public Categoria getCategoria() {
         return categoria;
     }
 
-    public void setCategoria(String categoria) {
+    public void setCategoria(Categoria categoria) {
         this.categoria = categoria;
     }
 
@@ -67,6 +69,19 @@ public class Livro {
 
     public void setExemplares(int exemplares) {
         this.exemplares = exemplares;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Livro livro = (Livro) o;
+        return categoria == livro.categoria;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(categoria);
     }
 
     @Override

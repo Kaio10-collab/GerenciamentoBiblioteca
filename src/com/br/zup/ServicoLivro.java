@@ -10,11 +10,11 @@ import java.util.List;
  * - buscar livro por autor ou editora
  * - listar os livros
  * */
-public class ServicoLivros {
+public class ServicoLivro {
 
     private static List<Livro>livros = new ArrayList<>();
 
-    public static Livro cadastrarNovoLivro(String autor, String titulo, String editora, int exemplares, String categoria){
+    public static Livro cadastrarNovoLivro(String autor, String titulo, String editora, int exemplares, Categoria categoria){
         Livro novoLivro;
         novoLivro = new Livro( autor, titulo, editora, categoria, exemplares );
         livros.add(novoLivro);
@@ -52,5 +52,15 @@ public class ServicoLivros {
             }
         }
         return livrosPesquisados;
+    }
+
+    public static List<Livro> pesquisarLivroPorCategoria(Categoria categoria) {
+        List<Livro> livrosPorCategoria = new ArrayList<>();
+        for (Livro livro : livros) {
+            if (livro.getCategoria() == categoria) {
+                livrosPorCategoria.add(livro);
+            }
+        }
+        return livrosPorCategoria;
     }
 }

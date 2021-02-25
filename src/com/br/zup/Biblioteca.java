@@ -28,34 +28,30 @@ public class Biblioteca {
 
     public void executar () throws Exception {
         IO.output("Bem vindo a biblioteca!");
-        while (executar){
+        while (executar) {
             menu();
             int option = IO.input().nextInt();
-            if(option == 1){
+            if (option == 1) {
                 IO.output("Por favor, forneça as seguintes informações: autor, título, editora, número de exemplares e categoria");
-                Livro livro =  ServicoLivros.cadastrarNovoLivro(
+                Livro livro =  ServicoLivro.cadastrarNovoLivro(
                         IO.input().nextLine(),
                         IO.input().nextLine(),
                         IO.input().nextLine(),
                         IO.input().nextInt(),
-                        IO.input().nextLine()
+                        getCategoriaLivro(IO.input().nextLine())
                 );
-
                IO.output("Livro foi cadastrado \n" + livro.toString());
-            }
-            else if (option == 2){
-                IO.output(ServicoLivros.ListarTodosOsLivros());
-            }
-            else if (option == 3){
+            } else if (option == 2){
+                IO.output(ServicoLivro.ListarTodosOsLivros());
+            } else if (option == 3){
                 IO.output("Favor informar o nome do autor");
-                List<Livro> livrosPorAutor = ServicoLivros.buscarLivroPorAutor(IO.input().nextLine());
+                List<Livro> livrosPorAutor = ServicoLivro.buscarLivroPorAutor(IO.input().nextLine());
                 IO.output(livrosPorAutor.toString());
-            }
-            else if (option == 4){
+            } else if (option == 4){
                 IO.output("Favor informar o nome da editora");
-                List<Livro> livrosPorEditora = ServicoLivros.buscarLivroPorEditora(IO.input().nextLine());
+                List<Livro> livrosPorEditora = ServicoLivro.buscarLivroPorEditora(IO.input().nextLine());
                 IO.output(livrosPorEditora.toString());
-            }else if(option == 0){
+            } else if(option == 0){
                 executar = false;
             } else if (option == 5) {
                 IO.output("Por favor, digite um nome e um e-mail: ");
@@ -92,13 +88,35 @@ public class Biblioteca {
         while(executarCadastroLivros) {
             IO.output("Por favor, digite o autor, título e categoria do livro");
             livrosUsuario.add(
-                    new Livro(IO.input().nextLine(), IO.input().nextLine(), IO.input().nextLine())
+                    new Livro(IO.input().nextLine(), IO.input().nextLine(), getCategoriaLivro(IO.input().nextLine()))
             );
             IO.output("Deseja adicionar mais um livro? (Sim/Nao)");
             String resposta = IO.input().nextLine();
             if (resposta.equalsIgnoreCase("nao")) {
                 executarCadastroLivros = false;
             }
+        }
+    }
+
+    private Categoria getCategoriaLivro(String categoria) {
+        if (categoria.equalsIgnoreCase("ROMANCE")) {
+            return Categoria.ROMANCE;
+        } else if (categoria.equalsIgnoreCase("FICCAO_CIENTIFICA")) {
+            return Categoria.FICCAO_CIENTIFICA;
+        } else if (categoria.equalsIgnoreCase("TI")) {
+            return Categoria.TI;
+        } else if (categoria.equalsIgnoreCase("ACAO")) {
+            return Categoria.ACAO;
+        } else if (categoria.equalsIgnoreCase("COMEDIA")) {
+            return Categoria.COMEDIA;
+        } else if (categoria.equalsIgnoreCase("ARTE")) {
+            return Categoria.ARTE;
+        } else if (categoria.equalsIgnoreCase("BIOGRAFIA")) {
+            return Categoria.BIOGRAFIA;
+        } else if (categoria.equalsIgnoreCase("CLASSICO")) {
+            return Categoria.CLASSICO;
+        } else {
+            return Categoria.OUTROS;
         }
     }
 

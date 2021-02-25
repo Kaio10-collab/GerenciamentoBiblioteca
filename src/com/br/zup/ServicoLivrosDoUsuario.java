@@ -1,7 +1,11 @@
 package com.br.zup;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
 
 public class ServicoLivrosDoUsuario {
      private static List<LivroDoUsuario> livroDoUsuarios = new ArrayList<>();
@@ -22,10 +26,10 @@ public class ServicoLivrosDoUsuario {
                  livroDoUsuario = item;
              }
          }
-         return verificarRemocao(livroDoUsuario, removido, titulo);
+         return verificarRemocaoDoLivroDoUsuario(livroDoUsuario, removido, titulo);
      }
 
-     private static Livro verificarRemocao(LivroDoUsuario livroDoUsuario, Livro removido, String titulo) throws Exception {
+     private static Livro verificarRemocaoDoLivroDoUsuario(LivroDoUsuario livroDoUsuario, Livro removido, String titulo) throws Exception {
          if (livroDoUsuario != null){
              for (Livro livro : livroDoUsuario.getLivros()) {
                  if(livro.getTitulo().equalsIgnoreCase(titulo)){
@@ -60,5 +64,45 @@ public class ServicoLivrosDoUsuario {
          } else {
              throw new Exception("Usuário não localizado!");
          }
+     }
+
+     public static List<Livro> recomendarLivroParaUsuario(Usuario usuario) {
+         List<Livro> livrosDoUsuario = null;
+         for (LivroDoUsuario item : livroDoUsuarios) {
+             if (item.getUsuario().getEmail().equalsIgnoreCase(usuario.getEmail())){
+                 livrosDoUsuario = item.getLivros();
+             }
+         }
+
+         List<Livro> livroCategoriaDistintas = livrosDoUsuario
+                 .stream()
+                 .distinct()
+                 .collect(Collectors.toList());
+         HashMap<Categoria, Integer> rankingCategoria = new HashMap<>();
+
+         for (Livro livro : livroCategoriaDistintas) {
+             rankingCategoria.put(livro.getCategoria(), 0);
+         }
+
+         for (Livro livro : livroCategoriaDistintas) {
+             for (Livro livroTotal : livrosDoUsuario) {
+                 if (livro.getCategoria() == livroTotal.getCategoria()) {
+                     int valorRankingCategoria = rankingCategoria.get(livro.getCategoria()) + 1;
+                     rankingCategoria.put(livro.getCategoria(), valorRankingCategoria);
+                 }
+             }
+         }
+
+         int maiorNoRanking = 0;
+         Categoria aMaiorCategoriaCadastradaPeloUsuario = null;
+         for (Map.Entry<Categoria, Integer> categoriaARecomendar : rankingCategoria.entrySet()) {
+            if (categoriaARecomendar.getValue() > maiorNoRanking) {
+                maiorNoRanking = categoriaARecomendar.getValue();
+                aMaiorCategoriaCadastradaPeloUsuario = categoriaARecomendar.getKey();
+            }
+         }
+
+         return ServicoLivro.pesquisarLivroPorCategoria(aMaiorCategoriaCadastradaPeloUsuario);
+
      }
 }
