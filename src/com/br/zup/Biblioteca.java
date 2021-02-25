@@ -24,6 +24,7 @@ public class Biblioteca {
                 "Opção 7: Remover um livro da lista de desejos do usuário\n" +
                 "Opção 8: Listar os livros da lista de desejos do usuário\n" +
                 "Opção 9: Recomendar livros para o usuário\n" +
+                "Opção 10: Total de livros cadastros do usuário\n" +
                 "Opção 0: Sair do programa");
     }
 
@@ -86,6 +87,13 @@ public class Biblioteca {
                 for (Livro livro : livros) {
                     IO.output(livro.toString());
                 }
+            } else if (option == 10) {
+                IO.output("Qual o seu email, por gentileza? ");
+                Usuario usuario = ServicoUsuario.pesquisarUsuarioPorEmail(IO.input().nextLine());
+                IO.output("Total de livros do usuário ");
+                IO.output(usuario.toString());
+                IO.output("Total: " + ServicoLivrosDoUsuario.numeroDeLivroDoUsuario(usuario));
+
             }
         }
 
