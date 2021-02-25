@@ -26,7 +26,7 @@ public class Biblioteca {
                 "Opção 9: Recomendar livros para o usuário\n" +
                 "Opção 0: Sair do programa");
     }
-W
+
     public void executar () throws Exception {
         IO.output("Bem vindo a biblioteca!");
         while (executar) {

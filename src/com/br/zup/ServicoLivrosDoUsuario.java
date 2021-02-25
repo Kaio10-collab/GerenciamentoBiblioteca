@@ -105,4 +105,13 @@ public class ServicoLivrosDoUsuario {
          return ServicoLivro.pesquisarLivroPorCategoria(aMaiorCategoriaCadastradaPeloUsuario);
 
      }
+
+     public static int numeroDeLivroDoUsuario(Usuario usuario) throws Exception {
+         for(LivroDoUsuario livroDoUsuario : livroDoUsuarios) {
+             if (livroDoUsuario.getUsuario().equals(usuario)) {
+                 return livroDoUsuario.getLivros().size();
+             }
+         }
+         throw new Exception("Usuário não possui livros cadastrados!");
+     }
 }
