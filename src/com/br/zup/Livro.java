@@ -9,13 +9,13 @@ public class Livro {
     private String autor;
     private String titulo;
     private String editora;
-    private String categoria;
+    private Categoria categoria;
     private int exemplares;
 
     public Livro() {
     }
 
-    public Livro(String autor, String titulo, String editora, String categoria, int exemplares) {
+    public Livro(String autor, String titulo, String editora, Categoria categoria, int exemplares) {
         this.autor = autor;
         this.titulo = titulo;
         this.editora = editora;
@@ -23,7 +23,7 @@ public class Livro {
         this.exemplares = exemplares;
     }
 
-    public Livro(String autor, String titulo, String categoria) {
+    public Livro(String autor, String titulo, Categoria categoria) {
         this.autor = autor;
         this.titulo = titulo;
         this.categoria = categoria;
@@ -53,11 +53,11 @@ public class Livro {
         this.editora = editora;
     }
 
-    public String getCategoria() {
+    public Categoria getCategoria() {
         return categoria;
     }
 
-    public void setCategoria(String categoria) {
+    public void setCategoria(Categoria categoria) {
         this.categoria = categoria;
     }
 
