@@ -61,7 +61,7 @@ public class ServicoLivrosDoUsuario {
          }
          if (livroDoUsuario != null) {
              for (Livro livro: livroDoUsuario.getLivros()) {
-                 listaLivros += livro.toString();
+                 listaLivros += livro.toStringlivroDoUsuario();
              }
              return listaLivros;
          } else {

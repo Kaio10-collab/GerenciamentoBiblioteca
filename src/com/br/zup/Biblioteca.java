@@ -15,7 +15,7 @@ public class Biblioteca {
     private boolean executar = true;
 
     private void menu (){
-        IO.output("Opção 1: Cadastrar um novo livro na biliboteca\n" +
+        IO.output("Opção 1: Cadastrar um novo livro na biblioteca\n" +
                 "Opção 2: Listar os livros da biblioteca\n" +
                 "Opção 3: Buscar o livro por autor da biblioteca\n" +
                 "Opção 4: Buscar o livro por editora da biblioteca\n" +
