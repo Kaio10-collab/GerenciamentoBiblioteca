@@ -94,4 +94,13 @@ public class Livro {
                 "\nexemplares: " + exemplares +
                 "\n=======================================================\n";
     }
+
+    public String toStringlivroDoUsuario() {
+        return "=======================================================" +
+                "\nautor: " + autor +
+                "\ntitulo: " + titulo +
+                "\ncategoria: " + categoria +
+                "\n=======================================================\n";
+    }
 }
+
