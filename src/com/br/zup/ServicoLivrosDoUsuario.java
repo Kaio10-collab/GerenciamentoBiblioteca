@@ -1,6 +1,5 @@
 package com.br.zup;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -82,32 +81,44 @@ public class ServicoLivrosDoUsuario {
                  .stream()
                  .distinct()
                  .collect(Collectors.toList());
-         HashMap<Categoria, Integer> rankingCategoria = new HashMap<>();
 
-         for (Livro livro : livroCategoriaDistintas) {
-             rankingCategoria.put(livro.getCategoria(), 0);
-         }
 
-         for (Livro livro : livroCategoriaDistintas) {
-             for (Livro livroTotal : livrosDoUsuario) {
-                 if (livro.getCategoria() == livroTotal.getCategoria()) {
-                     int valorRankingCategoria = rankingCategoria.get(livro.getCategoria()) + 1;
-                     rankingCategoria.put(livro.getCategoria(), valorRankingCategoria);
-                 }
-             }
-         }
+         HashMap<Categoria, Integer> rankingCategoria = gerarListaDeCategoriaARecomendar(livroCategoriaDistintas);
+         calcularMaiorCategoria(rankingCategoria, livroCategoriaDistintas, livrosDoUsuario);
+         return ServicoLivro.pesquisarLivroPorCategoria(categoriaComMaiorRecorrencia(rankingCategoria));
 
+     }
+     private static Categoria categoriaComMaiorRecorrencia(HashMap<Categoria, Integer> rankingCategoria){
          int maiorNoRanking = 0;
          Categoria aMaiorCategoriaCadastradaPeloUsuario = null;
          for (Map.Entry<Categoria, Integer> categoriaARecomendar : rankingCategoria.entrySet()) {
-            if (categoriaARecomendar.getValue() > maiorNoRanking) {
-                maiorNoRanking = categoriaARecomendar.getValue();
-                aMaiorCategoriaCadastradaPeloUsuario = categoriaARecomendar.getKey();
-            }
+             if (categoriaARecomendar.getValue() > maiorNoRanking) {
+                 maiorNoRanking = categoriaARecomendar.getValue();
+                 aMaiorCategoriaCadastradaPeloUsuario = categoriaARecomendar.getKey();
+             }
          }
+         return aMaiorCategoriaCadastradaPeloUsuario;
+     }
 
-         return ServicoLivro.pesquisarLivroPorCategoria(aMaiorCategoriaCadastradaPeloUsuario);
 
+     private static HashMap <Categoria, Integer> calcularMaiorCategoria(HashMap<Categoria, Integer> maiorCategoria, List <Livro> livros,  List<Livro> livrosDoUsuario ) {
+         for (Livro livro : livros) {
+             for (Livro livroTotal : livrosDoUsuario) {
+                 if (livro.getCategoria() == livroTotal.getCategoria()) {
+                     int valorRankingCategoria = maiorCategoria.get(livro.getCategoria()) + 1;
+                     maiorCategoria.put(livro.getCategoria(), valorRankingCategoria);
+                 }
+             }
+         }
+         return maiorCategoria;
+     }
+
+     private static HashMap <Categoria, Integer> gerarListaDeCategoriaARecomendar(List <Livro> livros ){
+         HashMap<Categoria, Integer> rankingCategoria = new HashMap<>();
+         for (Livro livro : livros) {
+             rankingCategoria.put(livro.getCategoria(), 0);
+         }
+         return rankingCategoria;
      }
 
      public static int numeroDeLivroDoUsuario(Usuario usuario) throws Exception {
