@@ -98,6 +98,28 @@ public class Biblioteca {
         }
     }
 
+    private Categoria getCategoriaLivro(String categoria) {
+        if (categoria.equalsIgnoreCase("ROMANCE")) {
+            return Categoria.ROMANCE;
+        } else if (categoria.equalsIgnoreCase("FICCAO_CIENTIFICA")) {
+            return Categoria.FICCAO_CIENTIFICA;
+        } else if (categoria.equalsIgnoreCase("TI")) {
+            return Categoria.TI;
+        } else if (categoria.equalsIgnoreCase("ACAO")) {
+            return Categoria.ACAO;
+        } else if (categoria.equalsIgnoreCase("COMEDIA")) {
+            return Categoria.COMEDIA;
+        } else if (categoria.equalsIgnoreCase("ARTE")) {
+            return Categoria.ARTE;
+        } else if (categoria.equalsIgnoreCase("BIOGRAFIA")) {
+            return Categoria.BIOGRAFIA;
+        } else if (categoria.equalsIgnoreCase("CLASSICO")) {
+            return Categoria.CLASSICO;
+        } else {
+            return Categoria.OUTROS;
+        }
+    }
+
     public boolean isExecutar() {
         return executar;
     }
