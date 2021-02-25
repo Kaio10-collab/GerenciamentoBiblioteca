@@ -7,6 +7,10 @@ import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
+/**
+ * Classe para definir recomendação de livros para o usuário.
+ * E também responsável por cadastrar e remover os livros do usuário que deseja lê.
+ */
 public class ServicoLivrosDoUsuario {
      private static List<LivroDoUsuario> livroDoUsuarios = new ArrayList<>();
 

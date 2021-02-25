@@ -3,6 +3,9 @@ package com.br.zup;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Classe de atributos do usuário para armazenar os livros que deseja lê.
+ */
 public class LivroDoUsuario {
 
     private Usuario usuario;
