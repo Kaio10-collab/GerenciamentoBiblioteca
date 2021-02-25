@@ -15,17 +15,18 @@ public class Biblioteca {
     private boolean executar = true;
 
     private void menu (){
-        IO.output("Opção 1: Cadastrar nome do livro\n" +
-                "Opção 2: Listar os livros\n" +
-                "Opção 3: Buscar o livro por autor\n" +
-                "Opção 4: Buscar o livro por editora\n" +
-                "Opção 5: Cadastrar Usuário\n" +
+        IO.output("Opção 1: Cadastrar um novo livro na biliboteca\n" +
+                "Opção 2: Listar os livros da biblioteca\n" +
+                "Opção 3: Buscar o livro por autor da biblioteca\n" +
+                "Opção 4: Buscar o livro por editora da biblioteca\n" +
+                "Opção 5: Cadastrar novo Usuário\n" +
                 "Opção 6: Cadastrar livros que o usuário deseja ler\n" +
                 "Opção 7: Remover um livro da lista de desejos do usuário\n" +
                 "Opção 8: Listar os livros da lista de desejos do usuário\n" +
+                "Opção 9: Recomendar livros para o usuário\n" +
                 "Opção 0: Sair do programa");
     }
-
+W
     public void executar () throws Exception {
         IO.output("Bem vindo a biblioteca!");
         while (executar) {
@@ -78,6 +79,13 @@ public class Biblioteca {
                 Usuario usuario = ServicoUsuario.pesquisarUsuarioPorEmail(IO.input().nextLine());
                 String livros = ServicoLivrosDoUsuario.listarLivroDoUsuario(usuario);
                 IO.output(livros);
+            } else if (option == 9) {
+                IO.output("Qual o seu email, por gentileza? ");
+                Usuario usuario = ServicoUsuario.pesquisarUsuarioPorEmail(IO.input().nextLine());
+                List<Livro> livros = ServicoLivrosDoUsuario.recomendarLivroParaUsuario(usuario);
+                for (Livro livro : livros) {
+                    IO.output(livro.toString());
+                }
             }
         }
 
