@@ -7,7 +7,7 @@ public enum Categoria {
     ACAO,
     COMEDIA,
     ARTE,
-    DOCUMENTARIO,
     BIOGRAFIA,
-    CLASSICO
+    CLASSICO,
+    OUTROS
 }
