@@ -10,7 +10,7 @@ import java.util.List;
  * - buscar livro por autor ou editora
  * - listar os livros
  * */
-public class ServicoLivros {
+public class ServicoLivro {
 
     private static List<Livro>livros = new ArrayList<>();
 
