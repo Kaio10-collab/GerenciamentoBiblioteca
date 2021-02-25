@@ -38,7 +38,7 @@ public class Biblioteca {
                         IO.input().nextLine(),
                         IO.input().nextLine(),
                         IO.input().nextInt(),
-                        IO.input().nextLine()
+                        getCategoriaLivro(IO.input().nextLine())
                 );
                IO.output("Livro foi cadastrado \n" + livro.toString());
             } else if (option == 2){
@@ -88,7 +88,7 @@ public class Biblioteca {
         while(executarCadastroLivros) {
             IO.output("Por favor, digite o autor, título e categoria do livro");
             livrosUsuario.add(
-                    new Livro(IO.input().nextLine(), IO.input().nextLine(), IO.input().nextLine())
+                    new Livro(IO.input().nextLine(), IO.input().nextLine(), getCategoriaLivro(IO.input().nextLine()))
             );
             IO.output("Deseja adicionar mais um livro? (Sim/Nao)");
             String resposta = IO.input().nextLine();
