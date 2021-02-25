@@ -28,34 +28,30 @@ public class Biblioteca {
 
     public void executar () throws Exception {
         IO.output("Bem vindo a biblioteca!");
-        while (executar){
+        while (executar) {
             menu();
             int option = IO.input().nextInt();
-            if(option == 1){
+            if (option == 1) {
                 IO.output("Por favor, forneça as seguintes informações: autor, título, editora, número de exemplares e categoria");
-                Livro livro =  ServicoLivros.cadastrarNovoLivro(
+                Livro livro =  ServicoLivro.cadastrarNovoLivro(
                         IO.input().nextLine(),
                         IO.input().nextLine(),
                         IO.input().nextLine(),
                         IO.input().nextInt(),
                         IO.input().nextLine()
                 );
-
                IO.output("Livro foi cadastrado \n" + livro.toString());
-            }
-            else if (option == 2){
-                IO.output(ServicoLivros.ListarTodosOsLivros());
-            }
-            else if (option == 3){
+            } else if (option == 2){
+                IO.output(ServicoLivro.ListarTodosOsLivros());
+            } else if (option == 3){
                 IO.output("Favor informar o nome do autor");
-                List<Livro> livrosPorAutor = ServicoLivros.buscarLivroPorAutor(IO.input().nextLine());
+                List<Livro> livrosPorAutor = ServicoLivro.buscarLivroPorAutor(IO.input().nextLine());
                 IO.output(livrosPorAutor.toString());
-            }
-            else if (option == 4){
+            } else if (option == 4){
                 IO.output("Favor informar o nome da editora");
-                List<Livro> livrosPorEditora = ServicoLivros.buscarLivroPorEditora(IO.input().nextLine());
+                List<Livro> livrosPorEditora = ServicoLivro.buscarLivroPorEditora(IO.input().nextLine());
                 IO.output(livrosPorEditora.toString());
-            }else if(option == 0){
+            } else if(option == 0){
                 executar = false;
             } else if (option == 5) {
                 IO.output("Por favor, digite um nome e um e-mail: ");
