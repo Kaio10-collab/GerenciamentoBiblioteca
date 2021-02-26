@@ -74,7 +74,7 @@ public class Biblioteca {
                 Usuario usuario = ServicoUsuario.pesquisarUsuarioPorEmail(IO.input().nextLine());
                 Livro livroRemovido = ServicoLivrosDoUsuario.removerLivroDoUsuario(usuario, IO.input().nextLine());
                 IO.output("Livro removido: ");
-                IO.output(livroRemovido.toString());
+                IO.output(livroRemovido.toStringlivroDoUsuario());
             } else if (option == 8) {
                 IO.output("Por favor, digite o email do usuário");
                 Usuario usuario = ServicoUsuario.pesquisarUsuarioPorEmail(IO.input().nextLine());

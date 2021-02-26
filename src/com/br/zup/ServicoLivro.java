@@ -34,33 +34,45 @@ public class ServicoLivro {
         return livroInformacao;
     }
 
-    public static List<Livro> buscarLivroPorAutor(String autor) {
+    public static List<Livro> buscarLivroPorAutor(String autor) throws Exception {
         List<Livro>livrosPesquisados = new ArrayList<>();
         for (Livro livro: livros) {
             if (livro.getAutor().equalsIgnoreCase(autor)){
                 livrosPesquisados.add(livro);
             }
         }
-        return livrosPesquisados;
+        if (!livrosPesquisados.isEmpty()) {
+            return livrosPesquisados;
+        } else {
+            throw new Exception("Nenhum livro foi localizado pelo autor " + autor);
+        }
     }
 
-    public static List<Livro> buscarLivroPorEditora(String editora) {
+    public static List<Livro> buscarLivroPorEditora(String editora) throws Exception {
         List<Livro>livrosPesquisados = new ArrayList<>();
         for (Livro livro: livros) {
             if (livro.getEditora().equalsIgnoreCase(editora)){
                 livrosPesquisados.add(livro);
             }
         }
-        return livrosPesquisados;
+        if (!livrosPesquisados.isEmpty()) {
+            return livrosPesquisados;
+        } else {
+            throw new Exception("Nenhum livro foi localizado com a editora  " + editora);
+        }
     }
 
-    public static List<Livro> pesquisarLivroPorCategoria(Categoria categoria) {
+    public static List<Livro> pesquisarLivroPorCategoria(Categoria categoria) throws Exception {
         List<Livro> livrosPorCategoria = new ArrayList<>();
         for (Livro livro : livros) {
             if (livro.getCategoria() == categoria) {
                 livrosPorCategoria.add(livro);
             }
         }
-        return livrosPorCategoria;
+        if (!livrosPorCategoria.isEmpty()) {
+            return livrosPorCategoria;
+        } else {
+            throw new Exception("Nenhumm livro na biblioteca foi localizado com a categoria " + categoria);
+        }
     }
 }
