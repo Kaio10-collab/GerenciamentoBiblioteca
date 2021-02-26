@@ -15,21 +15,21 @@ public class Biblioteca {
     private boolean executar = true;
 
     private void menu (){
-        IO.output("Opção 1: Cadastrar um novo livro na biblioteca\n" +
-                "Opção 2: Listar os livros da biblioteca\n" +
-                "Opção 3: Buscar o livro por autor da biblioteca\n" +
-                "Opção 4: Buscar o livro por editora da biblioteca\n" +
-                "Opção 5: Cadastrar novo Usuário\n" +
-                "Opção 6: Cadastrar livros que o usuário deseja ler\n" +
-                "Opção 7: Remover um livro da lista de desejos do usuário\n" +
-                "Opção 8: Listar os livros da lista de desejos do usuário\n" +
-                "Opção 9: Recomendar livros para o usuário\n" +
-                "Opção 10: Total de livros cadastros do usuário\n" +
-                "Opção 0: Sair do programa");
+        IO.output("\u27A4 1: Cadastrar um novo livro na biblioteca \t\t\t" +
+                "\u27A4 2: Listar os livros da biblioteca\n" +
+                "\u27A4 3: Buscar o livro por autor da biblioteca \t\t\t" +
+                "\u27A4 4: Buscar o livro por editora da biblioteca\n" +
+                "\u27A4 5: Cadastrar novo Usuário \t\t\t\t\t\t\t" +
+                "\u27A4 6: Cadastrar livros que o usuário deseja ler\n" +
+                "\u27A4 7: Remover um livro da lista de desejos do usuário\t" +
+                "\u27A4 8: Listar os livros da lista de desejos do usuário\n" +
+                "\u27A4 9: Recomendar livros para o usuário\t\t\t\t\t" +
+                "\u27A4 10: Total de livros cadastros do usuário\n" +
+                "\u27A4 0: Sair do programa");
     }
 
     public void executar () throws Exception {
-        IO.output("Bem vindo a biblioteca!");
+        IO.output(" \t \uD83D\uDCD6 \u2730 \u2730 \u2730 \u2730 \u2730 Bem-vindo a biblioteca! \u2730 \u2730 \u2730 \u2730 \u2730  \uD83D\uDCD6 \n");
         while (executar) {
             menu();
             int option = IO.input().nextInt();
