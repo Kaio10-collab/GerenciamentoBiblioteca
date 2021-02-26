@@ -20,7 +20,7 @@ public class ServicoLivrosDoUsuario {
          }
          livroDoUsuarios.add(livroDoUsuario);
      }
-
+    
      public static Livro removerLivroDoUsuario(Usuario usuario, String titulo ) throws Exception {
          LivroDoUsuario livroDoUsuario = null;
          Livro removido = null;
@@ -52,7 +52,6 @@ public class ServicoLivrosDoUsuario {
      }
 
      public static String listarLivroDoUsuario(Usuario usuario) throws Exception {
-         String listaLivros = "";
          LivroDoUsuario livroDoUsuario = null;
          for (LivroDoUsuario item : livroDoUsuarios) {
              if (item.getUsuario().getEmail().equalsIgnoreCase(usuario.getEmail())){
@@ -60,29 +59,31 @@ public class ServicoLivrosDoUsuario {
              }
          }
          if (livroDoUsuario != null) {
-             for (Livro livro: livroDoUsuario.getLivros()) {
-                 listaLivros += livro.toStringlivroDoUsuario();
-             }
-             return listaLivros;
+            return  gerarListaLivrosDoUsuario(livroDoUsuario.getLivros());
          } else {
              throw new Exception("Usuário não localizado!");
          }
      }
 
-     public static List<Livro> recomendarLivroParaUsuario(Usuario usuario) {
+     private static String gerarListaLivrosDoUsuario(List<Livro> livros)  {
+         String listaLivros = "";
+         for (Livro livro: livros) {
+             listaLivros += livro.toStringlivroDoUsuario();
+         }
+         return listaLivros;
+     }
+
+     public static List<Livro> recomendarLivroParaUsuario(Usuario usuario) throws Exception {
          List<Livro> livrosDoUsuario = null;
          for (LivroDoUsuario item : livroDoUsuarios) {
              if (item.getUsuario().getEmail().equalsIgnoreCase(usuario.getEmail())){
                  livrosDoUsuario = item.getLivros();
              }
          }
-
          List<Livro> livroCategoriaDistintas = livrosDoUsuario
                  .stream()
                  .distinct()
                  .collect(Collectors.toList());
-
-
          HashMap<Categoria, Integer> rankingCategoria = gerarListaDeCategoriaARecomendar(livroCategoriaDistintas);
          calcularMaiorCategoria(rankingCategoria, livroCategoriaDistintas, livrosDoUsuario);
          return ServicoLivro.pesquisarLivroPorCategoria(categoriaComMaiorRecorrencia(rankingCategoria));
@@ -101,7 +102,7 @@ public class ServicoLivrosDoUsuario {
      }
 
 
-     private static HashMap <Categoria, Integer> calcularMaiorCategoria(HashMap<Categoria, Integer> maiorCategoria, List <Livro> livros,  List<Livro> livrosDoUsuario ) {
+     private static HashMap<Categoria, Integer> calcularMaiorCategoria(HashMap<Categoria, Integer> maiorCategoria, List <Livro> livros,  List<Livro> livrosDoUsuario ) {
          for (Livro livro : livros) {
              for (Livro livroTotal : livrosDoUsuario) {
                  if (livro.getCategoria() == livroTotal.getCategoria()) {
@@ -113,7 +114,7 @@ public class ServicoLivrosDoUsuario {
          return maiorCategoria;
      }
 
-     private static HashMap <Categoria, Integer> gerarListaDeCategoriaARecomendar(List <Livro> livros ){
+     private static HashMap<Categoria, Integer> gerarListaDeCategoriaARecomendar(List <Livro> livros ){
          HashMap<Categoria, Integer> rankingCategoria = new HashMap<>();
          for (Livro livro : livros) {
              rankingCategoria.put(livro.getCategoria(), 0);
