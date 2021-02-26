@@ -20,7 +20,7 @@ public class ServicoLivrosDoUsuario {
          }
          livroDoUsuarios.add(livroDoUsuario);
      }
-    
+
      public static Livro removerLivroDoUsuario(Usuario usuario, String titulo ) throws Exception {
          LivroDoUsuario livroDoUsuario = null;
          Livro removido = null;
@@ -80,12 +80,16 @@ public class ServicoLivrosDoUsuario {
                  livrosDoUsuario = item.getLivros();
              }
          }
+         List<Livro> backupLivroUsuario = new ArrayList<>();
+         backupLivroUsuario.addAll(livrosDoUsuario);
          List<Livro> livroCategoriaDistintas = livrosDoUsuario
                  .stream()
                  .distinct()
                  .collect(Collectors.toList());
          HashMap<Categoria, Integer> rankingCategoria = gerarListaDeCategoriaARecomendar(livroCategoriaDistintas);
          calcularMaiorCategoria(rankingCategoria, livroCategoriaDistintas, livrosDoUsuario);
+         livrosDoUsuario.clear();
+         livrosDoUsuario.addAll(backupLivroUsuario);
          return ServicoLivro.pesquisarLivroPorCategoria(categoriaComMaiorRecorrencia(rankingCategoria));
 
      }
